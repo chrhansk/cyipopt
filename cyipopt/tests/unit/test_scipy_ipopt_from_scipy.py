@@ -982,14 +982,14 @@ class TestTrustRegionConstr():
 
     def test_default_jac_and_hess(self):
         def fun(x):
-            return (x - 1) ** 2
+            return ((x - 1) ** 2).item()
         bounds = [(-2, 2)]
         res = minimize(fun, x0=[-1.5], bounds=bounds, method=None)
         assert_array_almost_equal(res.x, 1, decimal=5)
 
     def test_default_hess(self):
         def fun(x):
-            return (x - 1) ** 2
+            return ((x - 1) ** 2).item()
 
         def jac(x):
             return 2*(x-1)
